@@ -13,3 +13,7 @@ license = "MIT"
 authors = ["xbmlz <chenxc170016@gmail.com>"]
 
 [dependencies]
+thiserror = "2"
+
+[target.'cfg(windows)'.dependencies]
+winreg = "0.55.0"
