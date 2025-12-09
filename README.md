@@ -6,6 +6,13 @@ This crate provides a simple, cross-platform way to obtain a unique identifier f
 
 ---
 
+## Features
+
+* Cross-Platform (tested on Win7+, Debian 8+, Ubuntu 14.04+, OS X 10.6+, FreeBSD 11+)
+* No admin privileges required
+* Hardware independent (no usage of MAC, BIOS or CPU — those are too unreliable, especially in a VM environment)
+* IDs are unique<sup>[1](#unique-key-reliability)</sup> to the installed OS
+
 ## Install
 
 Add `rs-machineid` to your `Cargo.toml`:
@@ -24,6 +31,7 @@ use rs_machineid::{get_machine_id, get_machine_id_hash};
 
 println!("Machine ID: {}", get_machine_id());
 println!("Machine ID Hash: {}", get_machine_id_hash());
+println!("Machine ID Hash with optional appid: {}", get_machine_id_hash("my-app"));
 ```
 
 ## Thanks
