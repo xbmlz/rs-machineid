@@ -1,0 +1,15 @@
+[package]
+name = "rs-machineid"
+version = "0.1.0"
+edition = "2024"
+documentation = "https://docs.rs/rs-machineid"
+repository = "https://github.com/xbmlz/rs-machineid"
+homepage = "https://github.com/xbmlz/rs-machineid"
+description = "Get the unique machine ID of any host (without admin privileges)."
+readme = "README.md"
+categories = ["API bindings"]
+keywords = ["machineid", "hostid", "windows", "linux", "darwin", "docker"]
+license = "MIT"
+authors = ["xbmlz <chenxc170016@gmail.com>"]
+
+[dependencies]
