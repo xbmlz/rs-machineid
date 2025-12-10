@@ -16,14 +16,7 @@ use windows::get_machine_id;
 #[cfg(target_os = "linux")]
 use linux::get_machine_id;
 
-#[cfg(any(
-    target_os = "freebsd",
-    target_os = "netbsd",
-    target_os = "openbsd",
-    target_os = "dragonfly",
-    target_os = "macos",
-    target_os = "ios"
-))]
+#[cfg(any(target_os = "freebsd", target_os = "netbsd", target_os = "openbsd"))]
 use bsd::get_machine_id;
 
 use crate::utils::sanitize;
