@@ -23,7 +23,7 @@ pub fn read_file(path: &str) -> Option<String> {
     }
 }
 
-pub fn sanitize_strict(id: &str) -> String {
+pub fn sanitize(id: &str) -> String {
     id.chars()
         .filter(|c| c.is_ascii_graphic() || c.is_ascii_punctuation() || c.is_ascii_alphanumeric())
         .collect()

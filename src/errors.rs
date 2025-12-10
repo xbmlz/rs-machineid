@@ -5,10 +5,10 @@ use thiserror::Error;
 pub enum MachineIdError {
     #[error("Failed to get machine ID: {0}")]
     IoError(#[from] std::io::Error),
-    
+
     #[error("Machine ID not found")]
     NotFound,
-    
+
     #[error("Platform not supported")]
     UnsupportedPlatform,
 }
