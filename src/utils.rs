@@ -15,7 +15,8 @@ pub fn exec(cmd: &str) -> Option<String> {
         None
     }
 }
-#[cfg(not(windows))]
+
+#[cfg(target_os = "linux")]
 pub fn read_file(path: &str) -> Option<String> {
     match std::fs::read_to_string(path) {
         Ok(content) => Some(content.trim().to_string()),
