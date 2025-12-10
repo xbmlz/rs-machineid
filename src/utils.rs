@@ -1,4 +1,4 @@
-use std::{fs, process::Command};
+use std::process::Command;
 
 pub fn exec(cmd: &str) -> Option<String> {
     #[cfg(unix)]
@@ -15,7 +15,7 @@ pub fn exec(cmd: &str) -> Option<String> {
         None
     }
 }
-
+#[cfg(not(windows))]
 pub fn read_file(path: &str) -> Option<String> {
     match fs::read_to_string(path) {
         Ok(content) => Some(content.trim().to_string()),
