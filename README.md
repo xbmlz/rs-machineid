@@ -17,19 +17,17 @@ Add `rs-machineid` to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-rs-machineid = "0.1"  # replace with latest version
+rs-machineid = "0.0.1"  # replace with latest version
 ```
 
 ## Usage
 
-To obtain the raw GUID of the device, use `get_machine_id()`:
+To obtain the raw GUID of the device, use `MachineId::get()`:
 
 ```rust
-use rs_machineid::{get_machine_id, get_machine_id_hash};
+use rs_machineid::{MachineID};
 
-println!("Machine ID: {}", get_machine_id());
-println!("Machine ID Hash: {}", get_machine_id_hash());
-println!("Machine ID Hash with optional appid: {}", get_machine_id_hash("my-app"));
+println!("Machine ID: {}", MachineId::get());
 ```
 
 ## Thanks
