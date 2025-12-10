@@ -17,7 +17,7 @@ pub fn exec(cmd: &str) -> Option<String> {
 }
 #[cfg(not(windows))]
 pub fn read_file(path: &str) -> Option<String> {
-    match fs::read_to_string(path) {
+    match std::fs::read_to_string(path) {
         Ok(content) => Some(content.trim().to_string()),
         Err(_) => None,
     }
