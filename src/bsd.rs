@@ -1,8 +1,4 @@
-#![cfg(any(
-    target_os = "freebsd",
-    target_os = "netbsd",
-    target_os = "openbsd"
-))]
+#![cfg(any(target_os = "freebsd", target_os = "netbsd", target_os = "openbsd"))]
 
 use crate::{
     errors::MachineIdError,
