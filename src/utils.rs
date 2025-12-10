@@ -1,5 +1,9 @@
 use std::process::Command;
 
+use hmac::Mac;
+
+type HmacSha256 = hmac::Hmac<sha2::Sha256>;
+
 pub fn exec(cmd: &str) -> Option<String> {
     #[cfg(unix)]
     let output = Command::new("sh").arg("-c").arg(cmd).output().ok()?;
@@ -28,4 +32,11 @@ pub fn sanitize(id: &str) -> String {
     id.chars()
         .filter(|c| c.is_ascii_graphic() || c.is_ascii_punctuation() || c.is_ascii_alphanumeric())
         .collect()
+}
+
+pub fn hashed_id(machine_id: &str, app_id: &str) -> String {
+    let mut mac = HmacSha256::new_from_slice(app_id.as_bytes()).unwrap();
+    mac.update(machine_id.as_bytes());
+    let hash = mac.finalize();
+    hex::encode(hash.into_bytes())
 }

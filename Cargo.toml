@@ -1,6 +1,6 @@
 [package]
 name = "rs-machineid"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 documentation = "https://docs.rs/rs-machineid"
 repository = "https://github.com/xbmlz/rs-machineid"
@@ -14,6 +14,9 @@ authors = ["xbmlz <chenxc170016@gmail.com>"]
 
 [dependencies]
 thiserror = "2"
+hmac = "0.12.1"
+sha2 = "0.10.9"
+hex = "0.4.3"
 
 [target.'cfg(windows)'.dependencies]
 winreg = "0.55.0"

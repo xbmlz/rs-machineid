@@ -19,7 +19,7 @@ use linux::get_machine_id;
 #[cfg(any(target_os = "freebsd", target_os = "netbsd", target_os = "openbsd"))]
 use bsd::get_machine_id;
 
-use crate::utils::sanitize;
+use crate::utils::{hashed_id, sanitize};
 
 /// Get the machine ID
 pub struct MachineId;
@@ -31,6 +31,14 @@ impl MachineId {
         let id = get_machine_id();
         match id {
             Ok(id) => Ok(sanitize(&id)),
+            Err(e) => Err(e),
+        }
+    }
+
+    pub fn get_hashed(app_id: &str) -> Result<String, MachineIdError> {
+        let id = get_machine_id();
+        match id {
+            Ok(id) => Ok(hashed_id(&id, app_id)),
             Err(e) => Err(e),
         }
     }
@@ -65,5 +73,19 @@ mod tests {
 
         assert_eq!(id1, id2);
         assert_eq!(id2, id3);
+    }
+
+    #[test]
+    fn test_get_hashed() {
+        let app_id = "test_app";
+        let hash = MachineId::get_hashed(app_id);
+        assert!(hash.is_ok());
+
+        let hash = hash.unwrap();
+        println!("Generated Hash: {}", hash);
+        println!("Length: {}", hash.len());
+
+        assert!(!hash.is_empty());
+        assert!(hash.len() >= 64);
     }
 }
